@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        请输入你的姓名：<input type="text">
+    </p>
+    <p>
+        报考院校：<input type="text" value="清华大学" disabled>
+    </p>
+    <p>
+        毕业院校：<input type="text" placeholder="请输入真实的毕业院校">
+    </p>
+    <p>
+        <form action="">
+            性别：
+            <label><input type="radio" name="sex" checked>男</label>
+            <label><input type="radio" name="sex">女</label>
+        </form>
+    </p>
+    <p>
+        <form action="">
+            血型：
+            <label for="A"><input type="radio" name="blood" id="A">A</label>
+            <label for="B"><input type="radio" name="blood" id="B">B</label>
+            <label for="O"><input type="radio" name="blood" id="O">O</label>
+            <label for="AB"><input type="radio" name="blood" id="AB">AB</label>
+        </form>
+    </p>
+    <p>
+        <form action="">
+            爱好：
+            <label><input type="checkbox">足球</label>
+            <label><input type="checkbox">羽毛球</label>
+            <label><input type="checkbox">篮球</label>
+            <label><input type="checkbox">游泳</label>
+        </form>
+    </p>
+    <p>
+        <form action="">
+            请选择你喜欢的编程语言：
+            <select>
+                <option>Go</option>
+                <option>JS</option>
+                <option>VUE</option>
+            </select>
+        </form>
+    </p>
+    <p>
+        留言：
+        <textarea cols="30" rows="10"></textarea>
+    </p>
+    <p>
+        <button>普通按钮</button><br>
+        <input type="button" value="普通按钮"><br>
+        <input type="submit" value="提交按钮">
+    </p>
+    <p>
+        <form action="">
+            <input type="text"><br>
+            <input type="reset" value="重置按钮">
+        </form>
+    </p>
+    
+    <!-- HTML5 控件新特性 -->
+    <p>HTML5 控件新特性</p>
+    <form action="">
+        <p>
+            颜色控件：
+            <input type="color">
+        </p>
+        <p>
+            日期选择：
+            <input type="date">
+        </p>
+        <p>
+            时间选择：
+            <input type="time">
+        </p>
+        <p>
+            电子邮件：
+            <input type="email">
+        </p>
+        <p>
+            必填：
+            <input type="text" required>
+        </p>
+        <p>
+            数字：
+            <input type="number" min="10" max="30">
+        </p>
+        <p>
+            拖拽条：
+            <input type="range" min="10" max="20">
+        </p>
+        <p>
+            搜索：
+            <input type="search">
+        </p>
+        <p>
+            网址：
+            <input type="url">
+        </p>
+        <p>
+            省份：
+            <input type="text" list="provice">
+            <datalist id="provice">
+                <option value="广东"></option>
+                <option value="广西"></option>
+                <option value="湖南"></option>
+            </datalist>
+        </p>
+        <p>
+            <input type="submit" value="提交表单">
+        </p>
+    </form>
+</body>
+</html>
