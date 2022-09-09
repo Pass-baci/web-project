@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css-Test</title>
+
+    <style>
+       span {
+        font-size: 15px;
+        color: red;
+       } 
+       ul {
+        list-style: none;
+       }
+       li {
+        color: #333;
+       }
+       a {
+        color: #333;
+        text-decoration: none;
+       }
+
+       .li1 {
+        color: red;
+       }
+       #li-id-1 {
+        color: blue;
+       }
+       
+       div p span {
+        color: aqua;
+       }
+
+       span.jiaoji {
+        color: beige;
+       }
+
+       ul, ol {
+        list-style: none;
+       }
+
+       div p span.fuhe {
+        color: green;
+       }
+    </style>
+</head>
+<body>
+    <p>我是一个<span>Span</span></p>
+    <p>
+        <ul>
+            <li class="li1" id="li-id-1">段落</li>
+            <li>段落</li>
+            <li>段落</li>
+            <li>段落</li>
+            <li>段落</li>
+        </ul>
+    </p>
+
+    <a href="">超级连接</a>
+    <a href="">超级连接</a>
+    <a href="">超级连接</a>
+    <a href="">超级连接</a>
+    <!-- 后代选择器 -->
+    <div>
+        <p>我是一个<span>后代选择器</span></p>
+    </div>
+    <!-- 交集选择器 -->
+    <div>
+        <p>我是一个<span class="jiaoji">交集选择器</span></p>
+    </div>
+    <!-- 并集选择器 -->
+    <div>
+        <ol>
+            <li>交集选择器</li>
+            <li>交集选择器</li>
+            <li>交集选择器</li>
+            <li>交集选择器</li>
+            <li>交集选择器</li>
+        </ol>
+        <ul>
+            <li>交集选择器</li>
+            <li>交集选择器</li>
+            <li>交集选择器</li>
+            <li>交集选择器</li>
+            <li>交集选择器</li>
+        </ul>
+    </div>
+    <!-- 复合选择器 -->
+    <div>
+        <p>我是一个<span class="fuhe">复合选择器</span></p>
+    </div>
+</body>
+</html>
