@@ -43,6 +43,18 @@
        div p span.fuhe {
         color: green;
        }
+
+       .child>span {
+        color: yellow;
+       }
+
+       p+span {
+        color: blue;
+       }
+
+       h3~span {
+        color: green;
+       }
     </style>
 </head>
 <body>
@@ -90,5 +102,31 @@
     <div>
         <p>我是一个<span class="fuhe">复合选择器</span></p>
     </div>
+
+    <!-- 子选择器 -->
+    <div class="child">
+        <span>子选择器</span>
+        <span>子选择器</span>
+        <div>
+            <span>非子选择器</span>
+            <span>非子选择器</span>
+        </div>
+    </div>
+    <!-- 相邻兄弟选择器 -->
+    <p></p>
+    <span>相邻兄弟选择器</span>
+    <span>非相邻兄弟选择器</span>
+    <!-- 通用兄弟选择器 -->
+    <h3>通用兄弟选择器</h3>
+    <span>通用兄弟选择器</span>
+    <span>通用兄弟选择器</span>
+    <span>通用兄弟选择器</span>
+    <div>
+        <span>非通用兄弟选择器</span>
+        <span>非通用兄弟选择器</span>
+    </div>
+    <p></p>
+    <span>通用兄弟选择器</span>
+    <span>通用兄弟选择器</span>
 </body>
 </html>

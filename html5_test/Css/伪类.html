@@ -20,9 +20,40 @@
         a:active {
             color: black;
         }
+
+        .demo {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+        .demo:empty {
+            border: 1px solid red;
+        }
+        .fo input:focus {
+            background-color: blue;
+        }
+        .fo input:enabled {
+            border: 1px solid rgb(41, 212, 64);;
+        }
+        .fo input:disabled {
+            border: 1px solid rgb(187, 27, 27);
+        }
     </style>
 </head>
 <body>
     <a href="">超级链接</a>
+
+    <!-- CSS3新增伪类 -->
+    <p class="demo"></p>
+    <p class="demo"></p>
+    <p class="demo">新增伪类</p>
+    <p class="demo">新增伪类</p>
+    <p class="demo"> </p>
+
+    <p class="fo">
+        <input type="text">
+        <input type="text" disabled>
+        <input type="text">
+    </p>
 </body>
 </html>

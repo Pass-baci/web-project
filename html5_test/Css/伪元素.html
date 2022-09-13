@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素</title>
+    <style>
+        a::before {
+            content: '★';
+        }
+        a::after {
+            content: '✔';
+        }
+
+        .box1 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            word-wrap: break-word;
+        }
+        .box1::selection {
+            background-color: yellow;
+        }
+        .box1::first-letter {
+            font-size: 20px;
+        }
+        .box1::first-line {
+            color: bisque;
+        }
+        .box2 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+        .box2::selection {
+            background-color: yellow;
+        }
+        .box2::first-letter {
+            font-size: 20px;
+        }
+        .box2::first-line {
+            color: bisque;
+        }
+    </style>
+</head>
+<body>
+   <p>
+    <a href="">超级链接</a>
+    <a href="">超级链接</a>
+    <a href="">超级链接</a>
+    <a href="">超级链接</a>
+   </p>
+
+    <div class="box1">
+        wenwenwenwenwenwenwenwenwenwenwenwen
+        wenwenwenwenwenwen
+        wenwenwenwenwenwen
+        wenwenwenwenwenwen
+        wenwenwenwenwenwen
+        wenwenwenwenwenwen
+    </div>
+    <div class="box2">
+        文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文
+        文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文文
+    </div>
+</body>
+</html>
