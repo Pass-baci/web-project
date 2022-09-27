@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 浮动：顺序贴靠，脱离标准文档流 -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .box {
+        width: 600px;
+        height: 600px;
+        border: 1px solid #000;
+        float: left;
+       }
+       .box .cs1 {
+        width: 200px;
+        height: 100px;
+        background-color: green;
+        float: left;
+       }
+       .box .cs2 {
+        width: 200px;
+        height: 100px;
+        background-color: yellow;
+        float: left;
+       }
+       .box .cs3 {
+        width: 200px;
+        height: 100px;
+        background-color: blue;
+        float: left;
+       }
+       span {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        float: left;
+        margin-left: 20px;
+        text-align: center;
+        line-height: 100px;
+       }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="cs1"></div>
+        <div class="cs2"></div>
+        <div class="cs3"></div>
+    </div>
+
+    <span>Span1</span>
+    <span>Span2</span>
+    <span>Span3</span>
+    <span>Span4</span>
+</body>
+</html>
