@@ -485,6 +485,13 @@ header .main-nav ul li a:hover {
     position: relative;
 }
 
+.content .exp-info h3 {
+    height: 20px;
+    line-height: 20px;
+    padding-left: 6px;
+    border-left: 8px solid #00978E;
+}
+
 .content .exp-info .more {
     color: #999999;
     position: absolute;
