@@ -547,6 +547,10 @@ footer .center .friend-links ul li {
     margin-left: 100px;
 }
 
+footer .center .friend-links ul li a {
+    color: #000000;
+}
+
 footer .center address {
     margin-top: 30px;
 }
