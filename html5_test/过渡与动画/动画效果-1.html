@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画效果</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 50px;
+            background-color: antiquewhite;
+            animation: move1 5s linear 0s infinite;
+        }
+        @keyframes move1 {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .box2 {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 50px;
+            background-color: antiquewhite;
+            animation: move2 5s linear 0s infinite alternate;
+            position: relative;
+        }
+        @keyframes move2 {
+            from {
+                left: 0px;
+            }
+            to {
+                left: 500px;
+            }
+        }
+        .box3 {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 50px;
+            background-color: antiquewhite;
+            animation: move3 5s linear 0s forwards;
+        }
+        @keyframes move3 {
+            from {
+                border-radius: 0%;
+            }
+            to {
+                border-radius: 50%;
+            }
+        }
+        .box4 {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 50px;
+            background-color: red;
+            animation: move4 5s linear 0s infinite alternate;
+        }
+        @keyframes move4 {
+            0% {
+                background-color: red;
+            }
+            20% {
+                background-color: yellow;
+            }
+            40% {
+                background-color: blue;
+            }
+            60% {
+                background-color: green;
+            }
+            80% {
+                background-color: orange;
+            }
+            100% {
+                background-color: rgb(235, 17, 224);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+</body>
+</html>

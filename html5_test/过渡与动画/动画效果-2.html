@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画效果-2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .dengpao {
+            position: absolute;
+            top: 200px;
+            left: 500px;
+        }
+        .guang {
+            position: absolute;
+            top: 149px;
+            left: 432px;
+            animation: move1 1s ease 0s infinite alternate;
+        }
+        @keyframes move1 {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .box {
+            position: absolute;
+            top: 200px;
+            left: 1200px;
+        }
+
+        .box img {
+            animation: move2 .5s ease 0s infinite alternate;
+        }
+        @keyframes move2 {
+            from {
+                transform: translateX(50px) translateY(50px);
+            }
+            to {
+                transform: translateX(-50px) translateY(-50px);
+            }
+        }
+        .box .xt {
+            width: 2px;
+            height: 100px;
+            position: absolute;
+            top: 30px;
+            left: 100px;
+            background-color: black;
+            animation: move3 .2s ease 0s infinite;
+            opacity: 0;
+        }
+        .box .xt1 {
+            width: 2px;
+            height: 100px;
+            position: absolute;
+            top: 20px;
+            left: 120px;
+            background-color: black;
+            animation: move3 .3s ease 0s infinite;
+            opacity: 0;
+        }
+        .box .xt2 {
+            width: 2px;
+            height: 100px;
+            position: absolute;
+            top: 50px;
+            left: 150px;
+            background-color: black;
+            animation: move3 .5s ease 0s infinite;
+            opacity: 0;
+        }
+        @keyframes move3 {
+            0% {
+                transform: rotate(45deg) translateY(-200px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img class="dengpao" src="./images/dengpao.png" alt="">
+    <img class="guang" src="./images/guang.png" alt="">
+    <div class="box">
+        <img src="./images/huojian.png" alt="">
+        <div class="xt"></div>
+        <div class="xt1"></div>
+        <div class="xt2"></div>
+    </div>
+</body>
+</html>
