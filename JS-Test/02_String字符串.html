@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_String字符串</title>
+</head>
+<body>
+    <script>
+        var str = 'abcdef'
+        console.log(str.charAt(0)) // a
+
+        console.log(str.substring(0, 2)) // ab
+        console.log(str.substring(2, 0)) // ab
+        console.log(str.substring(0)) // abcdef
+
+        console.log(str.substr(0, 2)) // ab
+        console.log(str.substr(0)) // abcdef
+        console.log(str.substr(-4, 2)) // cd
+
+        console.log(str.slice(-4, -2)) // cd
+        console.log(str.slice(0, 2)) // ab
+        console.log(str.slice(2, 0)) // 
+
+        console.log(str.indexOf('d')) // 3
+        console.log(str.indexOf('g')) // -1
+    </script>
+</body>
+</html>

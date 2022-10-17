@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_数据类型转换</title>
+</head>
+
+<body>
+    <script>
+        console.log(Number('123')) // 123
+        console.log(Number('123a')) // NaN
+        console.log(Number(undefined)) // NaN
+        console.log(Number(null)) // 0
+
+        console.log(parseInt('3.14')) // 3
+        console.log(parseInt('3.14aaa')) // 3
+        console.log(parseInt('aaa3.14')) // NaN
+        console.log(parseInt('3.9')) // 3
+
+        console.log(parseFloat('3.14')) // 3.14
+        console.log(parseFloat('3.14aaa')) // 3.14
+        console.log(parseFloat('aaa3.14')) // NaN
+        console.log(parseFloat('3.9')) // 3.9
+
+        console.log(String(123)) // '123'
+        console.log(String(123.4)) // '123.4'
+        console.log(String(2e3)) // '2000'
+        console.log(String(NaN)) // 'NaN'
+        console.log(String(undefined)) // 'undefined'
+        console.log(String(Infinity)) // 'Infinity'
+        console.log(String(0xf)) // '15'
+
+        console.log((6).toString()) // '6'
+        console.log(true.toString()) // 'true'
+        console.log(NaN.toString()) // 'NaN'
+
+        console.log(Boolean(123)) // true
+        console.log(Boolean(0)) // false
+        console.log(Boolean(NaN)) // false
+        console.log(Boolean(Infinity)) // true
+        console.log(Boolean(-Infinity)) // true
+        console.log(Boolean('')) // true
+        console.log(Boolean('123')) // true
+        console.log(Boolean('false')) // true
+        console.log(Boolean(undefined)) // false
+        console.log(Boolean(null)) // false
+    </script>
+</body>
+
+</html>
