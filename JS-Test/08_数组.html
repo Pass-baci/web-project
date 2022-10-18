@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+<body>
+    <script>
+        // 定义方法（三种方法）
+        var array = [11,22,33,44]
+        var array1 = new Array(11,22,33,44)
+        var array2 = new Array(4)
+        console.log(array, array1, array2)
+        // 下标越界（返回undefined）
+        console.log(array[-1], array[100])
+        // 数组最后一项
+        console.log(array[array.length-1],array1[array.length-1])
+        // 更改数组项
+        array[0] = 55
+        console.log(array)
+        // 数组遍历
+        for (var i=0; i<array.length; i++) {
+            console.log(array[i])
+        }
+        // 数组类型检测（object）isArray()
+        console.log(Array.isArray(array),Array.isArray('123'),typeof(array))
+        // 数组头尾操作（push、pop、unshift、shift）
+        array.pop() // 从尾部删除
+        array.push(66) // 从尾部添加
+        array.unshift(77) // 从头部添加
+        array.shift() // 从头部删除
+        console.log(array)
+        // splice 替换 插入 
+        array.splice(1, 2, 88, 99, 100)
+        console.log(array)
+        array.splice(1, 0, 111, 222)
+        console.log(array)
+        // slice 截取得到子数组
+        array3 = array.slice(1,4)
+        console.log(array3)
+        // join 数组转字符串
+        console.log(array.join(''))
+        // split 字符串转数组
+        console.log('ABCDEFG'.split(''))
+        // concat 连接多个数组，调用者与被调用者均不会被改变
+        console.log(array.concat(array1, array3))
+        // reverse 数组项置反
+        console.log(array.reverse())
+        console.log('ABCDEFG'.split('').reverse().join(''))
+        // indexOf 搜索数组中的元素，返回下标
+        array.push(111)
+        console.log(array,array.indexOf(111))
+        // includes 数组是否包含指定的值，返回布尔值
+        console.log(array.includes(111))
+        // sort 数组排序
+    </script>
+</body>
+</html>

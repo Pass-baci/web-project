@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_循环语句</title>
+</head>
+
+<body>
+    <script>
+        // for
+        var sum = 0;
+        for (var i = 0; i < 10; i++) {
+            sum += i;
+        };
+        console.log(sum)
+
+        // while
+        var j = 0;
+        while (j < 10) {
+            console.log(j);
+            j++;
+        };
+
+        // break
+        for (var i = 0; i < 10; i++) {
+            if (i == 1) {
+                console.log(i);
+                break;
+            };
+        };
+        // continue
+        for (var i = 0; i < 10; i++) {
+            if (i == 1) {
+                continue;
+            };
+            console.log(i);
+        };
+        // do while
+        var n = 0;
+        do {
+            console.log(n);
+            n++;
+        } while (n < 10);
+    </script>
+</body>
+
+</html>
