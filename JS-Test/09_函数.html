@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09_函数</title>
+</head>
+<body>
+    <script>
+        // 函数的定义 匿名函数 定义函数;函数的调用
+        var func = function() {console.log('匿名函数');}
+        func();
+        function test() {console.log('定义函数');}
+        test();
+        // 函数的优先提升
+        test1();
+        var test1 = function() {console.log('提升：匿名函数');}
+        function test1() {console.log('提升：定义函数');}
+        test1();
+        // 函数的参数
+        function sum(a, b) {
+            console.log('函数的参数：', a+b);
+        }
+        sum();
+        // arguments 可获取可变参数
+        function test2() {
+            for (var i=0; i<arguments.length; i++) {
+                console.log('可变参数：', arguments[i]);
+            }
+        }
+        // 函数返回值
+        function test3(a, b, c) {
+            return a+b+c;
+        }
+        console.log('函数返回值：', test3(1,2,3));
+        // 三位数的每位数的阶乘是否等于本身，寻找该数
+        function test4(n) {
+            var result = 1;
+            for (var i=1; i<=n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+        for (var i=100; i<1000; i++) {
+            str = i.toString();
+            if (i == test4(Number(str[0])) + test4(Number(str[1])) + test4(Number(str[2]))) {
+                console.log('水仙花数：', str);
+            }
+        }
+        // 递归 斐波那契数列
+        function test5(n) {
+            if (n==0 || n==1) return 1;
+            return test5(n-1)+test5(n-2);
+        }
+        console.log('斐波那契数列：', test5(16));
+        // 数组深克隆
+    </script>
+</body>
+</html>

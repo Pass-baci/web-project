@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件监听</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box"></div>
+    <input type="text" id="note">
+    <form id="formData">
+        <input type="text" name="note">
+        <input type="submit">
+    </form>
+    <script>
+        // 鼠标监听
+        var box = document.getElementById('box');
+        box.onclick = function () { console.log('onclick'); }; // 5
+        box.ondblclick = function () { console.log('ondblclick'); }; // 6
+        box.onmousedown = function () { console.log('onmousedown'); }; // 3
+        box.onmouseup = function () { console.log('onmouseup'); }; // 4
+        box.onmouseenter = function () { console.log('onmouseenter'); }; // 1
+        box.onmouseleave = function () { console.log('onmouseleave'); }; // 7
+        box.onmousemove = function () { console.log('onmousemove'); }; // 2
+        // 键盘监听
+        var note = document.getElementById('note');
+        note.onkeydown = function () {console.log('onkeydown');};
+        note.onkeyup = function () {console.log('onkeyup');};
+        note.onkeypress = function () {console.log('onkeypress');};
+        // 表单监听
+        var formData = document.getElementById('formData');
+        var formNote = formData.note;
+        formNote.onchange = function () {console.log('onchange');};
+        formNote.oninput = function () {console.log('oninput');};
+        formNote.onfocus = function () {console.log('onfocus');};
+        formData.onsubmit = function () {alert('onsubmit');};
+    </script>
+</body>
+
+</html>

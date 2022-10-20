@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10_DOM</title>
+    <style>
+        td {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="box1"></div>
+    <div id="box2">
+        <p>Test</p>
+        <p>Test1</p>
+        <p>Test2</p>
+    </div>
+    <table id="tb"></table>
+    <table id="tb1"></table>
+    <div id="box3">
+        <p>Test</p>
+        <p>Test1</p>
+        <p>Test2</p>
+    </div>
+    <div id="box4"></div>
+    <div id="box5">
+        <p>Test-Box5</p>
+    </div>
+    <div id="box6">
+       <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+       </ul>
+    </div>
+    <div id="box7"></div>
+    <script>
+        var oBox = document.getElementById('box');
+        oBox.innerHTML = '<ul><li>Box</li></ul>';
+        // oBox.innerText = 'Box';
+
+        // insertBefore appendChild
+        var oBox1 = document.getElementById('box1');
+        var oP = document.createElement('p');
+        oP.innerText = 'appendChild';
+        oBox1.appendChild(oP);
+
+        var oBox2 = document.getElementById('box2');
+        var oPOld = oBox2.getElementsByTagName('p');
+        var oP1 = document.createElement('p');
+        oP1.innerText = 'insertBefore';
+        oBox2.insertBefore(oP1, oPOld[oPOld.length - 1]);
+
+        // 动态创建20行12列的表格
+        var oTB = document.getElementById('tb');
+        for (var i = 0; i < 20; i++) {
+            var tr = document.createElement('tr');
+            for (var j = 0; j < 12; j++) {
+                var td = document.createElement('td');
+                tr.appendChild(td);
+            }
+            oTB.appendChild(tr);
+        }
+        // 制作九九乘法表
+        var oTB1 = document.getElementById('tb1');
+        for (var i = 1; i <= 9; i++) {
+            var tr = document.createElement('tr');
+            for (var j = 1; j <= i; j++) {
+                var td = document.createElement('td');
+                td.innerText = i * j
+                tr.appendChild(td);
+            }
+            oTB1.appendChild(tr);
+        }
+
+        // 移动节点
+        var oBox3 = document.getElementById('box3');
+        var oP2 = oBox3.getElementsByTagName('p');
+        var oBox4 = document.getElementById('box4');
+        var l = oP2.length
+        for (var i=0; i<l; i++) {
+            console.log(i);
+            oBox4.appendChild(oP2[i]);
+        }
+
+        // 删除节点 removeChild
+        var oBox5 = document.getElementById('box5');
+        var oP3 = oBox5.getElementsByTagName('p');
+        oBox5.removeChild(oP3[0]);
+        
+        // 克隆节点 cloneNode
+        var oBox6 = document.getElementById('box6');
+        var oBox7 = document.getElementById('box7');
+        var ulOp = oBox6.getElementsByTagName('ul')[0];
+        var newBox = ulOp.cloneNode(true);
+        oBox7.appendChild(newBox);
+    </script>
+</body>
+
+</html>
