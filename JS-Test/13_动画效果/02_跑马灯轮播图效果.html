@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_跑马灯轮播图效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #carousel {
+            width: 650px;
+            height: 360px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #carousel ul {
+            width: 5000px;
+            list-style: none;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+
+        #carousel ul li {
+            float: left;
+        }
+
+        #carousel #lBtn {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+            border-radius: 50%;
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            margin-top: -25px;
+        }
+
+        #carousel #rBtn {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+            border-radius: 50%;
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            margin-top: -25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="carousel">
+        <ul id="list">
+            <li><img src="../images/beijing/0.jpg" alt=""></li>
+            <li><img src="../images/beijing/1.jpg" alt=""></li>
+            <li><img src="../images/beijing/2.jpg" alt=""></li>
+            <li><img src="../images/beijing/3.jpg" alt=""></li>
+            <li><img src="../images/beijing/4.jpg" alt=""></li>
+        </ul>
+        <a href="javascript:;" id="lBtn"></a>
+        <a href="javascript:;" id="rBtn"></a>
+    </div>
+    <script>
+        var oCarousel = document.getElementById('carousel');
+        var oList = document.getElementById('list');
+        var cloneLi = oList.firstElementChild.cloneNode(true);
+        oList.appendChild(cloneLi);
+        var oLBtn = document.getElementById('lBtn');
+        var oRBtn = document.getElementById('rBtn');
+        var l = 0;
+        var id = 0;
+        var lock = false;
+        oRBtn.onclick = function () {
+            if (lock) {
+                return;
+            }
+            lock = true
+            id++;
+            oList.style.transition = 'left .5s ease 0s';
+            l = id * -650 + 'px';
+            oList.style.left = l;
+            if (id >= 5) {
+                id = 0;
+                setTimeout(function () {
+                    oList.style.transition = 'none';
+                    l = id * -650 + 'px';
+                    oList.style.left = l;
+                }, 500);
+            }
+            setTimeout(function () {
+                lock = false
+            }, 500);
+        };
+        oLBtn.onclick = function () {
+            if (lock) {
+                return;
+            }
+            lock = true
+            if (id == 0) {
+                id = 5;
+                oList.style.transition = 'none';
+                l = id * -650 + 'px';
+                oList.style.left = l;
+                setTimeout(function () {
+                    id--;
+                    oList.style.transition = 'left .5s ease 0s';
+                    l = id * -650 + 'px';
+                    oList.style.left = l;
+                }, 0);
+            } else {
+                id--;
+                oList.style.transition = 'left .5s ease 0s';
+                l = id * -650 + 'px';
+                oList.style.left = l;
+            }
+            setTimeout(function () {
+                lock = false
+            }, 500);
+        };
+    </script>
+</body>
+
+</html>

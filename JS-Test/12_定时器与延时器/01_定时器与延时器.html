@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #000;
+            position: relative;
+        }
+        #box {
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- 定时器 -->
+    <div>
+        <h2>定时器</h2>
+        <p id="info1">0</p>
+        <button id="startBtn1">开始</button>
+        <button id="finalBtn1">结束</button>
+    </div>
+    <!-- 延时器 -->
+    <div>
+        <h2>延时器</h2>
+        <button id="startBtn2">开始弹框</button>
+        <button id="finalBtn2">取消弹框</button>
+    </div>
+    <!-- 定时器实现动画 -->
+    <div>
+        <h2>定时器实现动画</h2>
+        <button id="reset">回到原点</button>
+        <button id="startBtn3">开始</button>
+        <button id="finalBtn3">暂停</button>
+        <div id="box"></div>
+    </div>
+    <script>
+        // 定时器[执行多次] setInternal 清除定时器 clearInternal 异步执行
+        var oStartBtn1 = document.getElementById('startBtn1');
+        var oFinalBtn1 = document.getElementById('finalBtn1');
+        var oInfo1 = document.getElementById('info1');
+        var internalTimer;
+        var i = 0;
+        oStartBtn1.onclick = function () {
+            clearInterval(internalTimer);
+            internalTimer = setInterval(function () {
+                oInfo1.innerText = ++i;
+            }, 1000);
+        };
+        oFinalBtn1.onclick = function () {
+            clearInterval(internalTimer);
+        };
+        // 延时器[只执行一次] setTimeout 清除延时器 clearTimeout 异步执行
+        var oStartBtn2 = document.getElementById('startBtn2');
+        var oFinalBtn2 = document.getElementById('finalBtn2');
+        var timeOutTimer;
+        oStartBtn2.onclick = function () {
+            timeOutTimer = setTimeout(function() {
+                alert("弹框出来了");
+            }, 2000);
+        };
+        oFinalBtn2.onclick = function () {
+            clearTimeout(timeOutTimer);
+        };
+        // 定时器实现动画
+        var oReset = document.getElementById('reset');
+        var oStartBtn3 = document.getElementById('startBtn3');
+        var oFinalBtn3 = document.getElementById('finalBtn3');
+        var oBox = document.getElementById('box');
+        var internalTimer1;
+        var l = 0;
+        oStartBtn3.onclick = function () {
+            internalTimer1 = setInterval(function () {
+                l += 3
+                oBox.style.left = l + 'px';
+            }, 20);
+        };
+        oFinalBtn3.onclick = function () {
+            clearInterval(internalTimer1);
+        };
+        oReset.onclick = function () {
+            l = 0;
+            oBox.style.left = l + 'px';
+        }
+    </script>
+</body>
+</html>

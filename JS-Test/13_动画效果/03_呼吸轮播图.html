@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_呼吸轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #carousel {
+            width: 650px;
+            height: 360px;
+            margin: 0 auto;
+            position: relative;
+        }
+        #carousel ul {
+            list-style: none;
+        }
+        #carousel ul li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease 0s;
+        }
+        #carousel ul li:first-child {
+            opacity: 1;
+        }
+        #carousel #lBtn {
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            margin-top: -25px;
+        }
+        #carousel #rBtn {
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            margin-top: -25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="carousel">
+        <ul id="list">
+            <li><img src="../images/beijing/0.jpg" alt=""></li>
+            <li><img src="../images/beijing/1.jpg" alt=""></li>
+            <li><img src="../images/beijing/2.jpg" alt=""></li>
+            <li><img src="../images/beijing/3.jpg" alt=""></li>
+            <li><img src="../images/beijing/4.jpg" alt=""></li>
+        </ul>
+        <a href="javascript:;" id="lBtn"></a>
+        <a href="javascript:;" id="rBtn"></a>
+    </div>
+    <script>
+        var oCarousel = document.getElementById('carousel');
+        var oList = document.getElementById('list');
+        var oLiList = oList.getElementsByTagName('li');
+        var oLBtn = document.getElementById('lBtn');
+        var oRBtn = document.getElementById('rBtn');
+        var id = 0;
+        var lock = true;
+        oLBtn.onclick = function () {
+            if (!lock) {
+                return;
+            }
+            lock = false;
+            oLiList[id].style.opacity = 0;
+            if (id == 0) {
+                id = 5;
+            }
+            id--;
+            oLiList[id].style.opacity = 1;
+            setTimeout(function () {
+                lock = true;
+            }, 600);
+        }
+        oRBtn.onclick = function () {
+            if (!lock) {
+                return;
+            }
+            lock = false;
+            oLiList[id].style.opacity = 0;
+            if (id == 4) {
+                id = -1;
+            }
+            id++;
+            oLiList[id].style.opacity = 1;
+            setTimeout(function () {
+                lock = true;
+            }, 600);
+        }
+    </script>
+</body>
+</html>

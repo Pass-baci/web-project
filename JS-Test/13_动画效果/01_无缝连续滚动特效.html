@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_无缝连续滚动特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 1000px;
+            height: 130px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #box ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5000px;
+            list-style: none;
+        }
+
+        #box ul li {
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul id="list">
+            <li><img src="../images/number/0.png" alt=""></li>
+            <li><img src="../images/number/1.png" alt=""></li>
+            <li><img src="../images/number/2.png" alt=""></li>
+            <li><img src="../images/number/3.png" alt=""></li>
+            <li><img src="../images/number/4.png" alt=""></li>
+            <li><img src="../images/number/5.png" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        var oBox = document.getElementById('box');
+        var oList = document.getElementById('list');
+        oList.innerHTML += oList.innerHTML
+        var l = 0;
+        var timer;
+        move();
+        function move() {
+            clearInterval(timer);
+            timer = setInterval(function () {
+                l -= 4;
+                if (l <= -1260) {
+                    l = 0;
+                }
+                oList.style.left = l + 'px';
+            }, 20)
+        }
+        oBox.onmouseenter = function () {
+            clearInterval(timer);
+        }
+        oBox.onmouseleave = function () {
+            move();
+        }
+    </script>
+</body>
+
+</html>
