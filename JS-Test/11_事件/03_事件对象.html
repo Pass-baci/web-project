@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 2000px;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            margin: 100px;
+        }
+
+        #test {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            top: 500px;
+            left: 200px;
+        }
+        #test1 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 700px;
+            left: 200px;
+        }
+        #test2 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 900px;
+            left: 200px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="info"></div>
+    <input type="text" id="note1">
+    <p id="info1"></p>
+    <input type="text" id="note2">
+    <p id="info2"></p>
+    <div id="test"></div>
+    <input type="text" id="note3">
+    <div id="test1"></div>
+    <p id="info3"></p>
+    <button id="btn">点击显示</button>
+    <div id="test2"></div>
+    <script>
+        // 获取坐标
+        var oBox = document.getElementById('box');
+        var oInfo = document.getElementById('info');
+        oBox.onmousemove = function (e) {
+            oInfo.innerHTML = 'offsetX/Y: ' + e.offsetX + ',' + e.offsetY + '<br>' // 盒子内坐标
+                + 'pageX/Y: ' + e.pageX + ',' + e.pageY + '<br>' // 页面坐标
+                + 'clientX/Y: ' + e.clientX + ',' + e.clientY // 浏览器坐标
+        };
+        // 获取输入键码 charCode
+        var oNote1 = document.getElementById('note1');
+        var oInfo1 = document.getElementById('info1');
+        oNote1.onkeypress = function (e) {
+            oInfo1.innerText = '输入键码：' + e.charCode
+        };
+        // 获取按下键码 keyCode
+        var oNote2 = document.getElementById('note2');
+        var oInfo2 = document.getElementById('info2');
+        oNote2.onkeydown = function (e) {
+            oInfo2.innerText = '按下键码：' + e.keyCode
+        };
+        // 案例：按方向键可以控制盒子的移动
+        var oTest = document.getElementById('test');
+        var t = 500;
+        var l = 200;
+        document.onkeydown = function (e) {
+            switch (e.keyCode) {
+                case 37:
+                    l -= 3;
+                    break;
+                case 38:
+                    t -= 3;
+                    break;
+                case 39:
+                    l += 3;
+                    break;
+                case 40:
+                    t += 3;
+                    break;
+            }
+            oTest.style.top = t + 'px';
+            oTest.style.left = l + 'px';
+        };
+        // 阻止浏览器默认行为 preventDefault
+        // 案例1：只能输入数字以及小写字母
+        // 数字字符码：48-57 小写字母字符码：97-122
+        var oNote3 = document.getElementById('note3');
+        oNote3.onkeypress = function (e) {
+            if (!(e.charCode >= 48 && e.charCode <= 57) && !(e.charCode >= 97 && e.charCode <= 122)) {
+                e.preventDefault();
+            }
+        };
+        // 案例2：当鼠标在盒子中向下滚动时，数字加1；反之，数字减1
+        var oTest1 = document.getElementById('test1');
+        var oInfo3 = document.getElementById('info3');
+        var a = 0;
+        oTest1.onmousewheel = function(e) {
+            e.preventDefault();
+            if (e.deltaY > 0 ) {
+                a++;
+            } else {
+                a--;
+            }
+            oInfo3.innerText = a
+        }; 
+        // 阻止事件传播 stopPropagation
+        // 案例：制作一个弹出层，点击按钮显示弹出层，点击网页其他地方，弹出层关闭
+        var oBtn = document.getElementById('btn');
+        var oTest2 = document.getElementById('test2');
+        oBtn.onclick = function (e) {
+            e.stopPropagation();
+            oTest2.style.display = 'block';
+        };
+        document.onclick = function (e) {
+            oTest2.style.display = 'none';
+        };
+        oTest2.onclick = function (e) {
+            e.stopPropagation();
+        };
+    </script>
+</body>
+
+</html>

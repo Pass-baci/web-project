@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 202px;
+            height: 202px;
+            border: 1px solid #000;
+            padding: 50px;
+        }
+        #box2 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            padding: 50px;
+        }
+        #box3 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+    <script>
+        // 嵌套元素分为捕获与冒泡阶段
+        var oBox1 = document.getElementById('box1');
+        var oBox2 = document.getElementById('box2');
+        var oBox3 = document.getElementById('box3');
+        // oBox1.onclick = function () {console.log('onclick box1');};
+        // oBox2.onclick = function () {console.log('onclick box2');};
+        // oBox3.onclick = function () {console.log('onclick box3');};
+        // oBox1.addEventListener('click', function () {console.log('addEventListener box1');}, true);
+        // oBox2.addEventListener('click', function () {console.log('addEventListener box2');}, true);
+        // oBox3.addEventListener('click', function () {console.log('addEventListener box3');}, true);
+        
+        // 同名事件情况下 DOM0级写法后面写的会覆盖先写的， 而DOM2级会按照顺序执行
+        oBox3.onclick = function () {console.log('onclick box3 first');};
+        oBox3.onclick = function () {console.log('onclick box3 last');};
+        oBox3.addEventListener('click', function () {console.log('addEventListener box3 first');}, true);
+        oBox3.addEventListener('click', function () {console.log('addEventListener box3 last');}, true);
+    </script>
+</body>
+</html>
