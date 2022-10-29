@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_寄生式继承</title>
+</head>
+<body>
+    <script>
+        // 通过Object.create()方法创建出的新对象，把预置方法绑定到新对象上
+        function f(o) {
+            p = Object.create(o);
+            // 问题 方法没有写到prototype上，导致函数不能复用
+            p.sayHello = function() {
+                console.log('Hello');
+            }
+            p.sleep = function() {
+                console.log('sleep');
+            }
+            return p
+        }
+        obj1 = {
+            a: 1,
+            b: 2
+        }
+        obj2 = f(obj1)
+        console.log(obj2);
+        obj2.sayHello();
+        obj2.sleep();
+    </script>
+</body>
+</html>

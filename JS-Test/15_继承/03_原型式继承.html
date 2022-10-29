@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_原型式继承</title>
+</head>
+<body>
+    <script>
+        function objetc(o) {
+            function F() {}
+            F.prototype = o;
+            return new F();
+        }
+        // 原型式继承，使用Object.create()【IE9+支持】，根据指定的对象为原型创建出新对象
+        obj1 = {
+            a: 1,
+            b: 2,
+        }
+        obj2 = Object.create(obj1, {
+            c: {value: 3}
+        })
+        console.log(obj2);
+        console.log(obj2.__proto__ === obj1);
+    </script>
+</body>
+</html>
