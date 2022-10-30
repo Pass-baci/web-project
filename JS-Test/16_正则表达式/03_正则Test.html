@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_正则Test</title>
+    <style>
+        .warning {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>
+            请输入中文姓名：
+            <input type="text" id="nameFiled">
+            <span class="warning" id="nameWarning">输入的中文姓名不合法</span>
+        </p>
+        <p>
+            请输入手机号码：
+            <input type="text" id="telFiled">
+            <span class="warning" id="telWarning">输入的手机号码不合法</span>
+        </p>
+        <p>
+            请输入Email
+            <input type="text" id="emailFiled">
+            <span class="warning" id="emailWarning">输入的Email不合法</span>
+        </p>
+    </div>
+    <script>
+        // 表单验证
+        var nameFiled = document.getElementById('nameFiled');
+        var nameWarning = document.getElementById('nameWarning');
+        var telFiled = document.getElementById('telFiled');
+        var telWarning = document.getElementById('telWarning');
+        var emailFiled = document.getElementById('emailFiled');
+        var emailWarning = document.getElementById('emailWarning');
+
+        nameFiled.onblur =function() {
+            name = nameFiled.value;
+            if (/^[\u4e00-\u9fa5]{2,4}$/.test(name)) {
+                nameWarning.style.display = 'none';
+            } else {
+                nameWarning.style.display = 'inline';
+            }
+        }
+
+        telFiled.onblur =function() {
+            tel = telFiled.value;
+            if (/^1\d{10}$/.test(tel)) {
+                telWarning.style.display = 'none';
+            } else {
+                telWarning.style.display = 'inline';
+            }
+        }
+
+        emailFiled.onblur =function() {
+            email = emailFiled.value;
+            if (/^\w{2,}\@[a-zA-Z0-9]{2,4}\.[a-zA-Z]{2,4}(\.[a-zA-Z])?$/.test(email)) {
+                emailWarning.style.display = 'none';
+            } else {
+                emailWarning.style.display = 'inline';
+            }
+        }
+    </script>
+</body>
+</html>
