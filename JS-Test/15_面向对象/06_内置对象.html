@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06_内置对象</title>
+</head>
+<body>
+    <script>
+        // 四舍五入
+        console.log(Math.round(3.14)) // 3 
+        // 获取数组最大值
+        arr = [2,3,4,1,2,44,343,33232,434343]
+        console.log(Math.max.apply(null, arr));
+        // 随机生成[a, b]之内的整数
+        // parseInt(Math.random() * (b-a+1))+a
+
+        // 日期对象 date
+        var d = new Date();
+        console.log(d.getDate());
+
+        // 时间戳
+        console.log(d.getTime()); // 精确到毫秒
+        console.log(Date.parse(d)); // 精确到秒
+        console.log(new Date(Date.parse(d)));
+    </script>
+</body>
+</html>

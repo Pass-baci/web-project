@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_倒计时小程序</title>
+</head>
+
+<body>
+    <h2>倒计时</h2>
+    <p id="info"></p>
+    <script>
+        var oInfo = document.getElementById('info');
+
+        setInterval(function () {
+            var date = new Date();
+            var endDate = new Date(2022, 9, 29);
+
+            var diff = endDate - date;
+
+            var day = parseInt(diff / (1000 * 60 * 60 * 24));
+            var hours = parseInt(diff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+            var min = parseInt(diff % (1000 * 60 * 60) / (1000 * 60));
+            var sec = parseInt(diff % (1000 * 60 * 60) % (1000 * 60) / 1000);
+
+            oInfo.innerText = day + '天' + hours + '时' + min + '分' + sec + '秒';
+        }, 1000)
+    </script>
+</body>
+
+</html>

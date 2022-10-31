@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_函数的上下文</title>
+</head>
+<body>
+    <script>
+        // 函数的结果只有在确定上下文才能知道。
+        // 函数的上下文是由调用函数的方式决定的。
+        var obj = {
+            a: 1,
+            b: 2,
+            fn: function() {
+                console.log(this.a+this.b);
+            }
+        };
+        obj.fn();
+        obj.toString()
+
+        // 规则1：对象打点调用它的方法函数，则函数的上下文时这个打点的对象。 
+        // 规则2：圆括号直接调用函数，则函数的上下文是window对象
+        // 规则3：数组（类数组对象）枚举出函数进行调用，上下文是这个数组（类数组对象）
+        // 规则4：IIFE中的函数，上下文是window对象  
+        // 规则5：定时器、延时器调用函数，上下文是window对象
+        // 规则6：事件处理函数的上下文是绑定事件的DOM元素
+
+        function sum(c, d) {
+            console.log(this.a + this.b + c + d)
+        }
+        var obj1 = {a: 1, b: 2};
+        // call apply指定上下文
+        sum.call(obj1, 1, 2)
+        sum.apply(obj1, [1, 2])
+
+        // 使用new关键字调用函数
+        // 先创建一个空的对象，函数内的上下文指向空对象，执行函数内逻辑，自动返回上下文对象
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_红绿灯小案例</title>
+    <style>
+        img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        function TrafficLight() {
+            this.color = 1;
+            this.init();
+        }
+        TrafficLight.prototype.init = function () {
+            this.dom = document.createElement('img');
+            this.dom.src = './images/' + this.color + '.jpg';
+            oBox.appendChild(this.dom);
+        }
+        TrafficLight.prototype.bindEvent = function () {
+            var self = this;
+            this.dom.onclick = function () {
+                self.changeColor();
+            }
+        }
+        TrafficLight.prototype.changeColor = function () {
+            this.color++;
+            if (this.color == 4) {
+                this.color = 1;
+            }
+            this.dom.src = './images/' + this.color + '.jpg';
+        }
+        var oBox = document.getElementById('box');
+        for (var i=0; i<100; i++) {
+            trafficLightObj = new TrafficLight();
+            trafficLightObj.bindEvent();
+        }
+    </script>
+</body>
+
+</html>

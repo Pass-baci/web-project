@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_内置构造函数</title>
+</head>
+
+<body>
+    <script>
+        let lables = []; // 已选值
+        let indexes = []; // 勾选列表下标
+        let oldColumns = []; // 列表值
+        let newColumns = []; // 列表值
+        let columnsMap = new Map();
+        if (newColumns.length != 0) {
+            // 第一次进入页面时，获取到lables，根据lables与oldColumns获取index
+            newColumns.forEach((item, index => {
+                columnsMap.set(item, index);
+            }));
+            if (oldColumns.length == 0) {
+                lables.forEach((item, index) => {
+                    if (columnsMap.has(item)) {
+                        indexes.push(columnsMap.get(item))
+                    } else {
+                        indexes.splice(index, 1);
+                    }
+                });
+                // 如果点击调用接口，则更改indexes数组值
+            } else {
+                indexes.forEach((item, index) => {
+                    if (columnsMap.has(oldColumns[item])) {
+                        indexes[index] = columnsMap.get(item);
+                    } else {
+                        indexes.splice(index, 1);
+                    }
+                });
+            }
+            oldColumns = newColumns;
+            newColumns = [];
+        }
+        // 当indexes变动时，lables也跟着变化
+        // 当columns刷新时，indexes需要跟着更新
+    </script>
+</body>
+
+</html>

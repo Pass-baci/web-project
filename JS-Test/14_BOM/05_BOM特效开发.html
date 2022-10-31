@@ -1,15 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>05_BOM特效开发</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            width: 500px;
+            height: 500px;
+            background-color: antiquewhite;
+            margin: 10px auto;
+        }
+
+        #toTop {
+            width: 70px;
+            height: 20px;
+            border: 1px solid #000;
+            position: fixed;
+            bottom: 100px;
+            right: 100px;
+            cursor: pointer;
+        }
+
+        .navSize {
+            width: 70px;
+            height: 185px;
+            border: 1px solid #000;
+            position: fixed;
+            right: 100px;
+            top: 50%;
+            margin-top: -75px;
+        }
+
+        .navSize ul {
+            padding: 5px 0;
+            list-style: none;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .navSize ul li {
+            width: 70px;
+            height: 30px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .cur {
+            background-color: aqua;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="navSize">
+        <ul id="list">
+            <li class="cur" data-n="DATA1">DATA1</li>
+            <li data-n="DATA2">DATA2</li>
+            <li data-n="DATA3">DATA3</li>
+            <li data-n="DATA4">DATA4</li>
+            <li data-n="DATA5">DATA5</li>
+        </ul>
+    </div>
+    <div id="toTop">返回顶部</div>
+    <section class="content" data-n="DATA1">DATA1</section>
+    <section class="content" data-n="DATA2">DATA2</section>
+    <section class="content" data-n="DATA3">DATA3</section>
+    <section class="content" data-n="DATA4">DATA4</section>
+    <section class="content" data-n="DATA5">DATA5</section>
     <script>
         // 返回顶部
+        var oToTop = document.getElementById('toTop');
+        var timer;
+        oToTop.onclick = function () {
+            clearInterval(timer);
+            timer = setInterval(function () {
+                document.documentElement.scrollTop -= 200;
+                if (document.documentElement.scrollTop == 0) {
+                    clearInterval(timer);
+                }
+            }, 20);
+        };
         // 楼层导航
+        var oList = document.getElementById('list');
+        var oLiList = document.querySelectorAll('#list li');
+        oList.onclick = function (e) {
+            if (e.target.tagName.toLowerCase() == "li") {
+                var n = e.target.getAttribute('data-n');
+                var content = document.querySelector('.content[data-n=' + n + ']');
+                document.documentElement.scrollTop = content.offsetTop;
+            };
+        };
+        var contentList = document.querySelectorAll('.content');
+        var offsetArr = [];
+        for (var i=0; i<contentList.length; i++) {
+            offsetArr.push(contentList[i].offsetTop);
+        };
+        offsetArr.push(Infinity);
+        console.log(offsetArr);
+        var nowFloor = 0;
+        window.onscroll = function () {
+            var scrollTop = document.documentElement.scrollTop;
+            for (var i=0; i<offsetArr.length; i++) {
+                if (scrollTop >= offsetArr[i]-10 && scrollTop < offsetArr[i+1]) {
+                    break
+                }
+            };
+            if (nowFloor != i) {
+                console.log(i);
+                nowFloor = i;
+
+                for (var j = 0; j < oLiList.length; j++) {
+                    if (j == i) {
+                        oLiList[j].className = 'cur';
+                    } else {
+                        oLiList[j].className = '';
+                    }
+                }
+            }
+        };
     </script>
 </body>
 </html>

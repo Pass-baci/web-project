@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_对象的克隆</title>
+</head>
+
+<body>
+    <script>
+        // 浅克隆 lightClone
+        function lightClone(o) {
+            var obj = {};
+            for (var k in o) {
+                obj[k] = o[k];
+            };
+            return obj
+        };
+        // 深克隆 deepClone
+        function deepClone(o) {
+            if (Array.isArray(o)) {
+                var result = [];
+                for (var i = 0; i < o.length; i++) {
+                    result.push(deepClone(o[i]))
+                };
+            } else if (typeof o == "object") {
+                var result = {};
+                for (var k in o) {
+                    result[k] = deepClone(o[k]);
+                };
+            } else {
+                var result = o;
+            }
+            return result
+        }
+
+        var obj = {
+            name: 'baci',
+            arr: [1, 2, 4, { age: 18 }]
+        };
+        var obj1 = lightClone(obj);
+        var obj2 = deepClone(obj);
+        obj.arr[0] = 0;
+        console.log(obj1);
+        console.log(obj2);
+    </script>
+</body>
+
+</html>
