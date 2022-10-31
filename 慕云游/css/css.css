@@ -242,11 +242,58 @@
 .banner {
     min-width: 1152px;
     position: relative;
+    overflow: hidden;
 }
 
-.banner img {
+/* .banner img {
     width: 100%;
     vertical-align: middle;
+} */
+
+.banner .carousel {
+    width: 600%;
+    overflow: hidden;
+    /* transform: translateX(-16.66%); */
+}
+
+.banner .carousel li {
+    width: 16.66%;
+    float: left;
+}
+
+.banner .carousel li img {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.banner .circles {
+    width: 160px;
+    height: 20px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -75px;
+    z-index: 99999;
+}
+
+.banner .circles li {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    float: left;
+    margin-right: 10px;
+    border-radius: 10px;
+    transition: width .5s ease 0s;
+    cursor: pointer;
+}
+
+.banner .circles li:last-child {
+    margin-right: 0;
+}
+
+.banner .circles li.current {
+    width: 40px;
+    background-color: #20BD9A;
 }
 
 .banner .center-wrap {
@@ -1095,4 +1142,20 @@ footer .copyrights {
 }
 footer .copyrights a {
     color: white;
+}
+
+.backTop {
+    position: fixed;
+    bottom: 80px;
+    right: 80px;
+    width: 80px;
+    height: 80px;
+    background: #ccc;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 12px;
+    box-sizing: border-box;
+    color: #000;
+    /* 隐藏元素 */
+    display: none;
 }
