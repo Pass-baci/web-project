@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_this指向</title>
+</head>
+<body>
+    <script>
+        // 1. 谁调用函数就指向谁
+        const timer = {
+            day: 10,
+            btn: function () {
+                setInterval(()=>{
+                    console.log(this.day++);
+                }, 1000)
+            }
+        }
+        timer.btn();
+        // 2. 在箭头函数中，没有this指向
+    </script>
+</body>
+</html>

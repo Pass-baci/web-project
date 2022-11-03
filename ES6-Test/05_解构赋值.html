@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_解构赋值</title>
+</head>
+<body>
+    <script>
+        // 1. 模式（结构匹配）
+        // 2. 索引值相同的完成赋值
+        // 不取的，可以使用逗号跳过
+        // 3. 可设置默认值（只有数组成员严格等于（===）undefined时，默认值才会生效）
+
+        // 类数组 arguments
+        function func() {
+            const [a,b] = arguments;
+            console.log(a,b);
+        }
+
+        // NodeList
+
+        // 函数参数的解构赋值
+
+        // 对象解构赋值
+        // 1. 模式（结构匹配）
+        // 2. 属性名相同的完成赋值，无需按照顺序
+        const {age: age, username:username} = {username: 'baci', age: 18};
+        console.log(age, username);
+    </script>
+</body>
+</html>
