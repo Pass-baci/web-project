@@ -12,6 +12,12 @@
     <script>
         const add = (x, y = 1) => x * y;
         console.log(add(2, 3));
+
+        // 解构赋值+参数默认值
+        const logUser = ({username='baci', age=10, sex='girl'} = {}) => {
+            console.log(username, age, sex);
+        }
+        logUser({username: 'baci1', age: 19, sex: 'boy'});
     </script>
 </body>
 
