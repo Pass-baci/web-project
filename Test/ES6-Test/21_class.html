@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class</title>
+</head>
+
+<body>
+    <script>
+        // 类简化了构造函数的写法，使得更加简洁易懂
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+                console.log(`your name is ${name}, your age is ${age}`);
+            }
+            speak() { }
+            // 声明静态方法：通过类进行调用，而不是通过类实例进行调用
+            static speak() {
+                console.log('static speak');
+            }
+            // 目前没有静态属性的写法，可以通过方法来进行约束
+            getVersion() { return '1.0' }
+        }
+        Person.speak();
+        const p = new Person('baci', 18);
+        const p1 = new Person('baci', 18);
+        console.log(p.getVersion());
+        console.log(p.name, p.age);
+        console.log(p);
+        console.log(Person);
+        console.log(p.speak === p1.speak);
+
+        new (
+            class Person {
+                constructor() {
+                    console.log('constructor');
+                }
+            }
+        )()
+        const p2 = new Person();
+
+            // 私有属性的解决办法
+            // 1. 通过使用_进行命名来表名当前的属性是私有的（弱约束）
+            // 2. 通过使用函数作用域，将类的属性提取到当前函数全局变量中，最后再通过window从而暴露类（强约束）
+            (function () {
+                let name = '';
+                class Person1 {
+                    constructor(username) { name = username; }
+                    speak() {
+                        console.log('speak');
+                    }
+                    getName() {return name;}
+                }
+                window.Person1 = Person1;
+            })();
+            (function () {
+                const p = new Person1('privat');
+                p.speak()
+                console.log(p.getName());
+            })();
+    </script>
+</body>
+
+</html>

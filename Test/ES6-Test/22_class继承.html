@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class继承</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name,age) {
+                this.name = name;
+                this.age = age;
+                console.log(`your name is ${name}, your age is ${age}`);
+                console.log(this);
+            }
+            speak() {
+                console.log('Person speak');
+                console.log(this);
+            }
+            static say() {
+                console.log('Person say');
+                console.log(this);
+            }
+        }
+
+        // 子类继承父类关键字：extends, 父类的this均指向子类
+        class Programmer extends Person {
+            constructor(name, age, sex) {
+                // this不能放在super()前面
+                super(name, age);
+                this.sex = sex;
+            }
+            // 同名覆盖父类
+            speak() {
+                super.speak();
+                console.log('Programmer speak');
+            }
+            static say() {
+                super.say();
+                console.log('Programmer say');
+            }
+        }
+
+        const programmer = new Programmer('name', 20, 'sex');
+        console.log(programmer.name, programmer.age, programmer.sex);
+        programmer.speak();
+        Programmer.say();
+    </script>
+</body>
+</html>
