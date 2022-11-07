@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_Iterator</title>
+</head>
+<body>
+    <script>
+        // lterator 遍历器（迭代器）
+        let it = [1,2][Symbol.iterator]();
+        console.log([1,2]);
+        console.log(it);
+        console.log(it.next());
+        console.log(it.next());
+        console.log(it.next());
+
+        let it1 = [1,2][Symbol.iterator]();
+        let next = it1.next();
+        while (!next.done) {
+            console.log(next.value);
+            next = it1.next();
+        }
+
+        // for...of 底层机制：Iterator
+        for (const item of [1,2,3]) {
+            console.log(item);
+        }
+
+        for (const key of [1,2,3].keys()) {
+            console.log(key);
+        }
+
+        for (const value of [1,2,3].values()) {
+            console.log(value);
+        }
+
+        for (const entry of [1,2,3].entries()) {
+            console.log(entry);
+        }
+
+        for (const [index, value] of [1,2,3].entries()) {
+            console.log(index, value);
+        }
+
+        // for...of 与forEach的区别，在forEach中不能使用break与contine
+
+        // 原生可遍历：数组，字符串，Set，Map，arguments， NodeList
+        // 非原生可遍历：对象
+    </script>
+</body>
+</html>

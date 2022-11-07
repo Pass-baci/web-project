@@ -7,6 +7,29 @@
     <title>Map</title>
 </head>
 <body>
-    
+    <script>
+        // Map：键值对集合
+        let map = new Map();
+        map.set('key', 'value').set('key', 'value1').set('key1', 'value1').set(true, 'true');
+        console.log(map);
+
+        console.log(map.get('key'));
+        console.log(map.get(true));
+
+        console.log(map.has('not'));
+
+        map.delete('key');
+        map.delete(false);
+        console.log(map);
+
+        map.forEach((value, key) => {
+            console.log(value, key);
+        });
+
+        map.clear();
+        console.log(map);
+
+        console.log(new Map([['key', 'value'],['key1','value1']]));
+    </script>
 </body>
 </html>

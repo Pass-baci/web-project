@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_string新增方法</title>
+</head>
+<body>
+    <script>
+        // includes 判断字符串是否存在某些字符
+        console.log('abc'.includes('a', 1));
+
+        // https://www.imooc.com/course/list
+        // https://www.imooc.com/course/list?type=2
+        // https://www.imooc.com/course/list?type=2&ct=2
+        let url = 'https://www.imooc.com/course/list?'
+        const addUrlParam = (url, name, value) => {
+            if (url.indexOf('?') != url.length-1) {
+                url += url.includes('?') ? '&' : '?';
+            }
+            url += `${name}=${value}`;
+            return url;
+        };
+        url = addUrlParam(url, 'type', 2);
+        console.log(url);
+        url = addUrlParam(url, 'ct', 2);
+        console.log(url);
+
+        // padStart 和 padEnd, 默认使用空格进行填充
+        console.log('x'.padStart(5, 'abc'));
+        console.log('x'.padEnd(5, 'abc'));
+
+        let time = '2022-1-1';
+        let timeArr = time.split('-');
+        console.log(`${timeArr[0]}-${timeArr[1].padStart(2, 0)}-${timeArr[2].padStart(2, 0)}`);
+        
+        // trimStart 和 trimEnd 去除首尾空格
+        console.log(' a b c '.trimStart());
+        console.log(' a b c '.trimEnd());
+    </script>
+</body>
+</html>

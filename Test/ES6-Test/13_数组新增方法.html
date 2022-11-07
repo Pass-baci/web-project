@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13_数组新增方法</title>
+</head>
+<body>
+    <script>
+        // includes 判断数组内是否包含某项
+        console.log([1,2,3].includes(1));
+
+        // Array.from() 将其他数据类型转换成数组
+        // 可遍历的均可调用
+        // 拥有length属性的任意对象
+        let obj = {
+            '0': 1,
+            '1': 2,
+            length: 2
+        };
+        console.log(Array.from(obj));
+        console.log([1,2].map((value)=>{
+            return value * 2
+        }));
+
+        // find() 找到满足条件后进行返回值，不会再进行查找
+        // findIndex() 找到满足条件后进行返回索引，不会再进行查找
+
+        console.log([1,2,3].find((value, index, arr)=> {
+            console.log(value, index, arr);
+            return value > 1;
+        }));
+        console.log([1,2,3].findIndex((value, index, arr)=> {
+            console.log(value, index, arr);
+            return value > 1;
+        }));
+    </script>
+</body>
+</html>
