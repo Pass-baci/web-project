@@ -12,4 +12,9 @@ class Person {
     }
 }
 
+const StateFaild = 1;
+const StateSucceess = 1;
+
+export {StateFaild, StateSucceess};
+
 export default Person;
