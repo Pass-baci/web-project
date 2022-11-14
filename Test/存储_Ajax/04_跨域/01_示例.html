@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 跨域示例
+        const url = 'https://www.imooc.com/api/http/search/suggest?words=js';
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = ()=>{
+            if (xhr.readyState !== 4) return
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                console.log(xhr.responseText);
+                console.log(typeof xhr.responseText);
+            }
+        }
+        xhr.open('GET', url, true);
+        xhr.send(null);
+        // 解决办法
+        // 1. CORS：Access-Control-Allow-Origin 适用于IE10以上的版本
+        // 2. JSONP
+    </script>
+</body>
+</html>

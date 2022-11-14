@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_FormData</title>
+</head>
+
+<body>
+    <form id="login" action="https://www.imooc.com/api/http/search/suggest?words=js" method="POST"
+        enctype="application/x-www-form-urlencoded">
+        <input type="text" name="username" placeholder="用户名" />
+        <input type="password" name="password" placeholder="密码" />
+        <input id="submit" type="submit" value="登录" />
+    </form>
+    <script>
+        const login = document.getElementById('login');
+        const btn = document.getElementById('submit');
+        const {username, password} = login;
+        btn.addEventListener('click', (e)=>{
+            e.preventDefault();
+            const xhr = new XMLHttpRequest();
+            xhr.addEventListener('load', () => {
+                if (xhr.readyState !== 4) return
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                    console.log(xhr.responseText);
+                    console.log(typeof xhr.responseText);
+                }
+            }, false)
+            xhr.open('POST', 'https://www.imooc.com/api/http/search/suggest?words=js', true);
+            const data = new FormData(login);
+            xhr.send(data);
+        }, false)
+    </script>
+</body>
+
+</html>
