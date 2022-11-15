@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>art-template</title>
+</head>
+<body>
+    <div id="content"></div>
+    <div id="content1"></div>
+    <div id="content2"></div>
+    <ul id="list"></ul>
+    <script src="https://unpkg.com/art-template@4.13.2/lib/template-web.js"></script>
+    <script id="tp-1" type="text/html">
+        {{value}}
+        {{data}}
+        {{data.a}}
+        {{$data}}
+    </script>
+
+    <script id="tp-2" type="text/html">
+        {{if sex === 'male'}}
+        男
+        {{else if sex === 'female'}}
+        女
+        {{else}}
+        其他
+        {{/if}}
+    </script>
+
+    <script id="tp-3" type="text/html">
+        {{each students}}
+        <li>{{$value.name}}{{$value.age}}{{$value.sex}}</li>
+        {{/each}}
+    </script>
+
+    <script id="tp-4" type="text/html">
+        <!-- {{include 'tp-4-header'}} -->
+        <% include('tp-4-header', $data) %>
+        <p>首页</p>
+        <!-- {{include 'tp-4-footer'}} -->
+        <% include('tp-4-footer', $data) %>
+    </script>
+    <script id="tp-4-header" type="text/html">
+        <header>我是{{page}}公共头部</header>
+    </script>
+    <script id="tp-4-footer" type="text/html">
+        <header>我是{{page1}}公共底部</header>
+    </script>
+
+    <script>
+        // https://aui.github.io/art-template/zh-cn/docs/syntax.html
+        const content = document.getElementById('content');
+        content.innerHTML = template('tp-1', {
+            value: 1,
+            data: {a: 1},
+            c: 2
+        })
+
+        const content1 = document.getElementById('content1');
+        content1.innerHTML = template('tp-2', {
+            sex: 'female'
+        })
+
+        const list = document.getElementById('list');
+        list.innerHTML = template('tp-3', {
+            students: [{
+                name: 'baci',
+                age: 18,
+                sex: 'male'
+            },{
+                name: 'baci',
+                age: 18,
+                sex: 'male'
+            },{
+                name: 'baci',
+                age: 18,
+                sex: 'male'
+            },{
+                name: 'baci',
+                age: 18,
+                sex: 'male'
+            }]
+        })
+        
+        const content2 = document.getElementById('content2');
+        content2.innerHTML = template('tp-4', {
+            page: 'baci',
+            page1: 'baci1'
+        })
+    </script>
+</body>
+</html>
