@@ -34,13 +34,9 @@
         //     timeout(xhr) {console.log('timeout',xhr);},
         // })
 
-        const p = getJSON(url, {
-            params: {
-                username: 'alex'
-            },
-            data: {
-                age: 18
-            },
+        const url1 = 'http://localhost:8090/img';
+
+        const p = getJSON(url1, {
         })
         p.then((response)=>{
             console.log(response);
