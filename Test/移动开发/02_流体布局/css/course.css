@@ -1,6 +1,6 @@
 .course {
     font-size: 14px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .course-title {
     padding: 0 0 10px 20px;
@@ -8,11 +8,13 @@
     font-size: 16px;
 }
 .course-list {
+    display: flex;
+    flex-wrap: wrap;
     padding-right: 20px;
 }
 .course-item {
     width: 50%;
-    float: left;
+    /* float: left; */
     padding: 0 0 10px 20px;
 }
 .course-item a {
