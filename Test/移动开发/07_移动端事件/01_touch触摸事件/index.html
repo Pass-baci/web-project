@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            
+            /* none: 禁止浏览器处理所有触摸操作 */
+            /* auto: 允许浏览器处理所有触摸操作 */
+            /* pan-x / pan-y: 平移操作 */
+            /* manipulation: 禁止双击缩放 */
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box"></div>
+    <script>
+        // Touch事件的类型：touchstart touchmove touchend touchcancel
+        // const $box = document.getElementById('box');
+        // $box.addEventListener('touchstart', handle('touchstart'), false);
+        // $box.addEventListener('touchmove', handle('touchmove'), false);
+        // $box.addEventListener('touchend', handle('touchend'), false);
+        // $box.addEventListener('touchcancel', handle('touchcancel'), false);
+
+        // function handle(funcName) {
+        //     return function () {
+        //         console.log(funcName);
+        //     }
+        // }
+
+        // Touch事件的属性
+        const $box = document.getElementById('box');
+        $box.addEventListener('touchstart', handle, false);
+
+        function handle(evt) {
+            // event 对象的常用属性
+            // console.log(evt.type);
+            // console.log(evt.touches);
+            // console.log(evt.targetTouches);
+            // console.log(evt.changedTouches);
+
+            // 触摸点的常用属性
+            // const touch = evt.changedTouches[0];
+            // console.log(touch);
+            // console.log(touch.identifier);
+            // console.log(touch.target);
+            // console.log(touch.screenX, touch.screenY);
+            // console.log(touch.clientX, touch.clientY); // 包含滚动条
+            // console.log(touch.pageX, touch.pageY); // 不包含滚动条
+
+            // 阻止浏览器的默认行为
+            // evt.preventDefault();
+        }
+    </script>
+</body>
+
+</html>

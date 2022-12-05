@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_Pointer事件</title>
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+    <script>
+        // Pointer 事件的类型
+        // pointerover pointerenter pointerout pointerleave pointerdown pointermove pointerup pointercancel
+        const $box = document.getElementById('box');
+        $box.addEventListener('pointerover', handle('pointerover'));
+        $box.addEventListener('pointerenter', handle('pointerenter'));
+        $box.addEventListener('pointerout', handle('pointerout'));
+        $box.addEventListener('pointerleave', handle('pointerleave'));
+        $box.addEventListener('pointerdown', handle('pointerdown'));
+        $box.addEventListener('pointermove', handle('pointermove'));
+        $box.addEventListener('pointerup', handle('pointerup'));
+        $box.addEventListener('pointercancel', handle('pointercancel'));
+        function handle(funcName) {
+            return function(evt) {
+                // console.log(funcName);
+                console.log(evt);
+            }
+        }
+
+        // Pointer 常用的对象属性
+
+    </script>
+</body>
+</html>
