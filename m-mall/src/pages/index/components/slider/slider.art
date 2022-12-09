@@ -1,0 +1,16 @@
+<div class="swiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <a href="javascript:;">
+                <img src="./images/slider_1.jpg" alt="" class="swiper-img">
+            </a>
+        </div>
+        <div class="swiper-slide">
+            <a href="javascript:;">
+                <img src="./images/slider_2.jpg" alt="" class="swiper-img">
+            </a>
+        </div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+</div>

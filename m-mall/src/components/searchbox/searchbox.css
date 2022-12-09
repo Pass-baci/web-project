@@ -1,0 +1,46 @@
+.searchbox {
+    /* 使用响应式布局 */
+    display: flex;
+    /* 垂直居中 */
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0 20px;
+    border-radius: 27.5px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.searchbox .icon-search {
+    color: #fff;
+    font-size: 20px;
+}
+
+.searchbox-form {
+    /* 占满父元素 */
+    flex: 1;
+    margin-left: 6px;
+}
+
+.searchbox-input {
+    width: 100%;
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+}
+
+/* 适配chrome */
+.searchbox-input::-webkit-input-placeholder {
+    color: #fff
+}
+
+/* 适配Mozilla Firefox 4 to 18 */
+.searchbox-input:-moz-placeholder {
+    color: #fff;
+}
+
+/* 适配Mozilla Firefox 19+ */
+.searchbox-input::-moz-placeholder {
+    color: #fff;
+}
