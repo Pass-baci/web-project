@@ -23,6 +23,10 @@ module.exports = {
     static: './dist',
     hot: true,
   },
+  // 解决热更新失效配置
+  optimization: {
+    runtimeChunk: 'single'
+  },
   resolve: {
     extensions: ['.js'],
     alias: {
@@ -32,7 +36,8 @@ module.exports = {
       images: resolve('src/assets/images'),
       styles: resolve('src/assets/styles'),
       components: resolve('src/components'),
-      pages: resolve('src/pages')
+      pages: resolve('src/pages'),
+      utils: resolve('utils')
     }
   },
   module: {
@@ -72,10 +77,12 @@ module.exports = {
     ]
   },
   plugins: [new HtmlWebpackPlugin({
-    template: './src/pages/index/index.art',
-    filename: 'index.html'
+    template: 'src/pages/index/index.art',
+    filename: 'index.html',
+    chunks: ['index']
   }),new HtmlWebpackPlugin({
-    template: './src/pages/destination/destination.art',
-    filename: 'destination.html'
+    template: 'src/pages/destination/destination.art',
+    filename: 'destination.html',
+    chunks: ['destination']
   })],
 };
