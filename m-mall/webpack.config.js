@@ -8,7 +8,8 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/pages/index/index.js',
-    destination: './src/pages/destination/index.js'
+    destination: './src/pages/destination/index.js',
+    personal: './src/pages/personal/index.js'
   },
   output: {
     path: resolve('dist'),
@@ -84,5 +85,9 @@ module.exports = {
     template: 'src/pages/destination/destination.art',
     filename: 'destination.html',
     chunks: ['destination']
+  }),new HtmlWebpackPlugin({
+    template: 'src/pages/personal/personal.art',
+    filename: 'personal.html',
+    chunks: ['personal']
   })],
 };
