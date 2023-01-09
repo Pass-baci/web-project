@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-认识vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    inputVaule: '',
+                    list: []
+                }
+            },
+            methods: {
+                handleClick() {
+                    this.list.push(this.inputVaule);
+                    this.inputVaule = '';
+                },
+            },
+            // mounted() {
+            //     setInterval(()=>{
+            //         this.message+=1
+            //     }, 1000)
+            // },
+            template: `
+                <input v-model="inputVaule" />
+                <button v-on:click="handleClick">提交</button>
+                <ul>
+                    <liTest v-for="item in list" v-bind:content="item"></liTest>
+                </ul>
+            `
+        })
+        app.component('liTest', {
+            props: ['content'],
+            template: `<li>{{content}}</li>`
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
