@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>emit</title>
+</head>
+<body>
+   <div id="app"></div> 
+   <script>
+    // 以传递事件形式修改父组件的值
+    // const app = Vue.createApp({
+    //     data() {
+    //         return {
+    //             count: 1
+    //         }
+    //     },
+    //     methods: {
+    //         addOnes(param) {
+    //             this.count += param
+    //         }
+    //     },
+    //     template: `<div><test :count="count" @add-one="addOnes"/></div>`
+    // })
+    // app.component('test', {
+    //     props: ['count'],
+    //     emits: ['AddOne'],
+    //     methods: {
+    //         handleClick() {
+    //             this.$emit('AddOne', this.count+3)
+    //         }
+    //     },
+    //     template: `<div @click="handleClick">{{count}}</div>`
+    // })
+    // const vm = app.mount('#app')
+
+    // 通过固定语法使子组件能修改父组件的值
+    const app = Vue.createApp({
+        data() {
+            return {
+                count: 1
+            }
+        },
+        template: `<div><test v-model="count" /></div>`
+    })
+    app.component('test', {
+        props: ['modelValue'],
+        methods: {
+            handleClick() {
+                this.$emit('update:modelValue', this.modelValue+3)
+            }
+        },
+        template: `<div @click="handleClick">{{modelValue}}</div>`
+    })
+    const vm = app.mount('#app')
+   </script>
+</body>
+</html>

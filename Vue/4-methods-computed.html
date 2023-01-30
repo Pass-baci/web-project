@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-methods-computed</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        // methods: 如果data数据更改则会重新调用方法
+        // computed：如果不涉及computed内方法字段的更改，则不会重新调用该方法
+       const vm = Vue.createApp({
+            data() {
+                return {
+                    message : 'hello world',
+                }
+            },
+            methods: {
+                getTotal() {
+                    return new Date().getTime()
+                }
+            },
+            computed: {
+                total() {
+                    return new Date().getTime()
+                }
+            },
+            template: `
+                <div>{{message}}</div>
+                <div>{{total}}</div>
+            `
+        }).mount('#app')
+    </script>
+</body>
+</html>

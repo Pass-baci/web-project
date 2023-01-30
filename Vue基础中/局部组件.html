@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>局部组件</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const Counter = {
+            data() {
+                return {
+                    count: 1,
+                }
+            },
+            template: `<div @click="count += 1">{{count}}</div>`
+        }
+
+        const HelloWorld = {
+            template: `<div>hello world</div>`
+        }
+
+        const app = Vue.createApp({
+            components: {
+                Counter,
+                HelloWorld,
+            },
+            template: `<div><counter /><hello-world /></div>`
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
