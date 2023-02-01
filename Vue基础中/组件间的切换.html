@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件间的切换</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .v-enter-from {
+            opacity: 0;
+        }
+        .v-enter-to {
+            opacity: 1;
+        }
+        .v-enter-active {
+            transition: opacity 3s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const componentA = {
+            template: `
+                <div>hello world</div>
+            `
+        }
+
+        const componentB = {
+            template: `
+                <div>Bye world</div>
+            `
+        }
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    show: true
+                }
+            },
+            components: {
+                'component-a': componentA,
+                'component-b': componentB
+            },
+            methods: {
+                handleClick() {
+                    this.show = !this.show
+                }
+            },
+            template: `
+                <transition mode="out-in" appear>
+                    <component-a v-if="show"/>
+                    <component-b v-else/>
+                </transition>
+                <button @click="handleClick">切换</button>
+            `
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>

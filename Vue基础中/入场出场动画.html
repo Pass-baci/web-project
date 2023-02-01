@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入场出场动画</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .transi-enter-from {
+            opacity: 0;
+        }
+        .transi-enter-active {
+            transition: opacity 3s ease-in
+        }
+        .transi-enter-to {
+            opacity: 1;
+        }
+        .transi-leave-from {
+            opacity: 1;
+        }
+        .transi-leave-active {
+            transition: opacity 3s ease-out;
+        }
+        .transi-leave-to {
+            opacity: 0;
+        }
+
+        @keyframes strack {
+            0% {
+                transform: translateX(-100px);
+            }
+            50% {
+                transform: translateX(-50px);
+            }
+            100% {
+                transform: translateX(0px);
+            }
+        }
+        .transf-enter-active {
+            animation: strack 3s;
+        }
+
+        @keyframes strack1 {
+            0% {
+                transform: translateX(0px);
+            }
+            50% {
+                transform: translateX(-50px);
+            }
+            100% {
+                transform: translateX(-100px);
+            }
+        }
+        .transf-leave-active {
+            animation: strack1 3s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    show: false,
+                    show1: false,
+                    show2: false
+                }
+            },
+            methods: {
+                handleTransi() {
+                    this.show = !this.show;
+                },
+                handleTransf() {
+                    this.show1 = !this.show1;
+                },
+                handleTransJS() {
+                    this.show2 = !this.show2;
+                },
+                bEnterJs(el) {
+                    el.style.color = 'red';
+                },
+                enterJS(el, done) {
+                    const animation = setInterval(()=>{
+                        const color = el.style.color;
+                        if (color === 'red') {
+                            el.style.color = 'green';
+                        } else {
+                            el.style.color = 'red'
+                        }
+                    }, 1000)
+                    setTimeout(()=>{
+                        clearInterval(animation)
+                    }, 3000)
+                },
+                bLeaveJS() {
+                    alert(123)
+                }
+            },
+            template: `
+                <transition name="transi">
+                    <div v-if="show">hello world</div>
+                </transition>
+                <button @click="handleTransi">切换入场出场过渡</button>
+                <transition 
+                enter-active-class="transf-enter-active"
+                enter-leave-class="transf-leave-active">
+                    <div v-if="show1">hello world</div>
+                </transition>
+                <button @click="handleTransf">切换入场出场动画</button>
+                <transition
+                @before-enter="bEnterJs"
+                @enter="enterJS"
+                @before-leave="bLeaveJS">
+                    <div v-show="show2">hello world</div>
+                </transition>
+                <button @click="handleTransJS">切换入场出场JS</button>
+            `
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
