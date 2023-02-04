@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setup-context</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const app = Vue.createApp({
+            methods: {
+                changeClick() {
+                    alert('click')
+                }
+            },
+            template: `<child app="app"><span>hello</span></child>
+            <child @change="changeClick"><span>hello</span></child>`
+        })
+        app.component('child', {
+            template: `
+                <div @click="handleClick">1234</div>
+            `,
+            setup(props, context) {
+                const {h} = Vue;
+                const {attrs, slots, emit} = context
+                console.log(attrs.app);
+                function handleClick() {
+                    emit('change')
+                }
+                // return ()=>h('div', {}, slots.default())
+                return {handleClick}
+            }
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>

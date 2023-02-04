@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式引用</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const app = Vue.createApp({
+            template: `
+                <div>{{name}}</div>
+                <div>{{nameObj.name}}</div>
+                <div>{{nameArr[0]}}</div>
+                <div>{{age}}</div>
+            `,
+            setup(props, context) {
+                const {ref,reactive, toRefs, toRef} = Vue;
+                let name = ref('dell');
+                const nameObj = reactive({name: 'kk', age: 0});
+                const nameArr = reactive([123]);
+                let age = toRef(nameObj, 'age');
+                setTimeout(()=>{
+                    name.value = 'hello';
+                    nameObj.name = 'jj';
+                    nameArr[0] = 456;
+                    age.value = 20;
+                }, 2000)
+                return {
+                    name,nameObj,nameArr,age
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
