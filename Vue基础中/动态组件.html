@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态组件</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    component: 'input-item'
+                }
+            },
+            methods: {
+                handleClick() {
+                    this.component = this.component == 'input-item' ? 'hello-item': 'input-item'
+                }
+            },
+            template: `
+                <keep-alive>
+                <component :is="component">
+                </component>
+                </keep-alive>
+                <button @click="handleClick">切换</button>
+            `
+        })
+        app.component('input-item', {
+            template: `<input />`
+        })
+        app.component('hello-item', {
+            template: `<div>hello world</div>`
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>

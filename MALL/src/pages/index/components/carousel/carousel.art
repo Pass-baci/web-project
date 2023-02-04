@@ -1,0 +1,14 @@
+<ul class="carousel" id="carousel_list">
+    <li data-n="0"><img src="./images/banner1.jpg" alt=""></li>
+    <li data-n="1"><img src="./images/banner2.jpg" alt=""></li>
+    <li data-n="2"><img src="./images/banner3.jpg" alt=""></li>
+    <li data-n="3"><img src="./images/banner4.jpg" alt=""></li>
+    <li data-n="4"><img src="./images/banner5.jpg" alt=""></li>
+</ul>
+<ol class="circles" id="circles">
+    <li class="current" data-n="0"></li>
+    <li data-n="1"></li>
+    <li data-n="2"></li>
+    <li data-n="3"></li>
+    <li data-n="4"></li>
+</ol>

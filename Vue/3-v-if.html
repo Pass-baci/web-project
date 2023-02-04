@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-v-if</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        // v-if：如果值为false，则直接销毁DOM元素
+        // v-show：如果值为false，则使用样式隐藏元素display: none
+        const app = Vue.createApp({
+            data() {
+                return {
+                    title: '显示/隐藏',
+                    message: 'hello world',
+                    show: true
+                }
+            },
+            methods: {
+                handleClick() {
+                    this.show = !this.show;
+                }
+            },
+            template: `
+                <div v-if="show">{{message}}</div>
+                <div v-show="show">{{message}}</div>
+                <button @click="handleClick" :title="title">显示/隐藏</button>
+            `
+        })
+        const vm = app.mount('#app')
+    </script>
+</body>
+</html>

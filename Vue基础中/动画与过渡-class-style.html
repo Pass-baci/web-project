@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画与过渡-class-style</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        @keyframes leftToRight {
+            0% {
+                transform: translateX(-100px);
+            }
+            50% {
+                transform: translateX(-50px);
+            }
+            0% {
+                transform: translateX(0px);
+            }
+        }
+        .animation {
+            animation: leftToRight 3s;
+        }
+        .transition {
+            transition: 3s all ease;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    animate: {
+                        animation: false
+                    },
+                    transit: {
+                        transition: true,
+                        blue: true,
+                        green: false
+                    },
+                    transitStyle: {
+                        'background-color': 'blue'
+                    }
+                }
+            },
+            methods: {
+                changeAnimate() {
+                    this.animate.animation = !this.animate.animation;
+                },
+                changeTransit() {
+                    this.transit.blue = !this.transit.blue;
+                    this.transit.green = !this.transit.green;
+                },
+                changeTransitStyle() {
+                    this.transitStyle['background-color'] = this.transitStyle['background-color'] === 'blue' ? 'green' : 'blue';
+                }
+            },
+            template: `<div :class="animate">hello world</div><button @click="changeAnimate">切换动画</button>
+            <div :class="transit">hello world</div><button @click="changeTransit">切换过渡</button>
+            <div class="transition" :style="transitStyle">hello world</div><button @click="changeTransitStyle">切换过渡</button>`
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>

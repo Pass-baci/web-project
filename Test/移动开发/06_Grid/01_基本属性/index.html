@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_基本属性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        .tmpl {
+            display: grid;
+            /* grid-template-rows: 150px 150px 150px;
+            grid-template-columns: 150px 150px 150px; */
+
+            /* height: 300px;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr; */
+
+            grid-template-rows: repeat(3, 150px);
+            grid-template-columns: repeat(3, 150px);
+
+            /* grid-auto-flow: column; */
+            /* grid-auto-flow: row; */
+            /* grid-auto-flow: row dense; */
+            
+            /* grid-auto-flow: column;
+            grid-auto-columns: 200px; */
+
+            /* row-gap: 20px;
+            column-gap: 20px; */
+            /* gap: 20px 20px; */
+
+            grid-template-areas: 
+             'a b c'
+             'd e f'
+             'g . i';
+        }
+        /* .item1, .item2 {
+            grid-column-start: 1;
+            grid-column-end: 3;
+        } */
+    </style>
+</head>
+<body>
+    <div class="tmpl">
+        <div class="box item1" style="background-color: red;">1</div>
+    <div class="box item2" style="background-color: blue;">2</div>
+    <div class="box" style="background-color: rgb(36, 206, 135);">3</div>
+    <div class="box" style="background-color: yellow;">4</div>
+    <div class="box" style="background-color: blueviolet;">5</div>
+    <div class="box" style="background-color: green">6</div>
+    <div class="box" style="background-color: gold;">7</div>
+    <div class="box" style="background-color: gray;">8</div>
+    <div class="box" style="background-color: rgb(44, 103, 190);">9</div>
+    <div class="box" style="background-color: rgb(44, 103, 190);">9</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>组件间的交互</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const ComTest = {
+            // props: {
+            //     content: {
+            //         type: Number,
+            //         required: true,
+            //         validator: function(value) {
+            //             return value < 1000
+            //         }
+            //     },
+            //     countAbc: {}, 
+            // },
+            props: ['content','countAbc','a','b','c'],
+            template: `
+                <div>{{content}}</div>
+                <div>{{countAbc}}</div>
+                <div>{{a}}</div>
+                <div>{{b}}</div>
+                <div>{{c}}</div>
+            `
+        }
+        const app = Vue.createApp({
+            template: `<div><test /></div>`
+        })
+        app.component('test', {
+            data() {
+                return {
+                    message: 123,
+                    count: 1,
+                    params: {
+                        a: 1,
+                        b: 2,
+                        c: 3
+                    }
+                }
+            },
+            components: {
+                ComTest
+            },
+            template: `<div><com-test :content="message" :count-abc="count" v-bind="params" /></div>`
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>

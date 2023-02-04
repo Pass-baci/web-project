@@ -1,0 +1,106 @@
+.site-head .topbar {
+    min-width: 1152px;
+    height: 32px;
+    background-color: #2A2A2A;
+    line-height: 32px;
+}
+
+.site-head .topbar a {
+    color: white;
+}
+
+.site-head .topbar .shortcut-links {
+    float: left;
+}
+
+.site-head .topbar .shortcut-links>ul>li {
+    float: left;
+    margin-right: 18px;
+    font-size: 12px;
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu {
+    padding-right: 12px;
+    position: relative;
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu .arrow {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+    transition: transform .25s linear 0s;
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu:hover .arrow {
+    transform: rotate(180deg);
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu .arrow b {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    position: absolute;
+    top: -2px;
+    transform: rotate(45deg);
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu .arrow i {
+    width: 10px;
+    height: 10px;
+    background-color: #2A2A2A;
+    position: absolute;
+    top: -4.5px;
+    transform: rotate(45deg);
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu .menu {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.20);
+    z-index: 9999;
+    display: none;
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu .menu .menu-list {
+    padding: 8px;
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu .menu ul.menu-list li a {
+    color: #000;
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu .sqmenu {
+    width: 121px;
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu .scmenu {
+    width: 76px;
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu .jdmsmenu {
+    width: 64px;
+}
+
+.site-head .topbar .shortcut-links>ul>li.have-menu:hover .menu {
+    display: block;
+}
+
+.site-head .topbar .topbar-r {
+    width: 225px;
+    float: right;
+}
+
+.site-head .topbar .topbar-r a,
+.site-head .topbar .topbar-r span {
+    color: white;
+    margin-right: 10px;
+}
+
+.site-head .topbar .topbar-r a:last-child {
+    margin-right: 0;
+}

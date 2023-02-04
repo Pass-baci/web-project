@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex布局</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .header-layout,
+        .footer-layout {
+            height: 50px;
+        }
+        .header-layout {
+            background-color: red;
+        }
+        .footer-layout {
+            background-color: yellow;
+        }
+        .main-layout {
+            flex-grow: 1;
+            display: flex;
+        }
+        .content-layout {
+            background-color: gray;
+            flex-grow: 3;
+        }
+        .nav-layout {
+            background-color: green;
+            order: -1;
+            flex-grow: 1;
+        }
+        .aside-layout {
+            background-color: blue;
+            flex-grow: 1;
+        }
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-layout center">头部</header>
+    <section class="main-layout">
+        <div class="content-layout center">内容区域</div>
+        <div class="nav-layout center">导航区域</div>
+        <div class="aside-layout center">侧栏区域</div>
+    </section>
+    <footer class="footer-layout center">尾部</footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手势模拟</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box"></div>
+    <script>
+        function swipe($el, cb) {
+            // 定义触摸开始值
+            const start = {};
+
+            // 定义限制
+            const threshold = {
+                time: 500,
+                distance: 100
+            };
+
+            $el.addEventListener('pointerdown', startHandle, false);
+            $el.addEventListener('touchstart', evt => {
+                evt.preventDefault();
+            }, false);
+
+            function startHandle(evt) {
+                evt.preventDefault();
+
+                start.time = new Date().getTime();
+                start.x = evt.pageX;
+                start.y = evt.pageY;
+
+                document.addEventListener('pointerup', endHandle, false);
+                document.addEventListener('pointercancel', endHandle, false);
+            }
+
+            function endHandle(evt) {
+                const delta = {};
+                let direction = '';
+
+                delta.time = new Date().getTime() - start.time;
+                delta.x = evt.pageX - start.x;
+                delta.y = evt.pageY - start.y;
+
+                if (delta.time > threshold.time || (Math.abs(delta.x) < threshold.distance && Math.abs(delta.y) < threshold.distance)) {
+                    return;
+                } else {
+                    if (Math.abs(delta.x) >= Math.abs(delta.y)) {
+                        if (delta.x > 0) {
+                            direction = 'right';
+                        } else {
+                            direction = 'left';
+                        }
+                    } else {
+                        if (delta.y > 0) {
+                            direction = 'down';
+                        } else {
+                            direction = 'up';
+                        }
+                    }
+                    cb.call($el, direction);
+                }
+                document.removeEventListener('pointerup', endHandle, false);
+                document.removeEventListener('pointercancel', endHandle, false);
+            }
+        }
+
+        swipe(document.getElementById('box'), function (direction) {
+            console.log(direction);
+        })
+    </script>
+</body>
+
+</html>

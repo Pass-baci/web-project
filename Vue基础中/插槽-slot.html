@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插槽-slot</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message: 'hello world',
+                    header: 'header',
+                    footer: 'footer',
+                }
+            },
+            // template: `
+            //     <slot-test>{{message}}</slot-test>
+            // `
+
+            // v-slot:header可简写成#header
+            // template: `
+            // <slot-test-1>
+            //     <template v-slot:header>
+            //         <div>{{header}}</div>
+            //     </template>
+            //     <template v-slot:footer>
+            //         <div>{{footer}}</div>
+            //     </template>
+            // </slot-test-1>
+            // `
+
+            template: `
+                <slot-test-2 v-slot="slotProps">
+                    <span>{{slotProps.item}}</span>
+                </slot-test-2>
+            `
+        })
+        app.component('slot-test', {
+            template: `
+                <div>slot</div>
+                <slot></slot>
+                <div>slot-1</div>
+            `
+        })
+        app.component('slot-test-1', {
+            template: `
+                <slot name="header"></slot>
+                <div>content</div>
+                <slot name="footer"></slot>
+            `
+        })
+        app.component('slot-test-2', {
+            data() {
+                return {
+                    list: [1,2,3]
+                }
+            },
+            template: `
+                <slot v-for="item in list" :item="item"></slot>
+            `
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的</title>
+</head>
+<body>
+    <div class="personal-layout">
+        <div class="header-layout">{{include './components/header/header.art'}}</div>
+            <div class="avatar-layout">
+                {{include './components/avatar/avatar.art'}}
+            </div>
+            <div class="info-layout">用户信息</div>
+        <div class="nav-layout">用户菜单</div>
+        <div class="tabbar-layout"><% include('../../components/tabbar/tabbar.art', {active: 'personal'}) %></div>
+    </div>
+</body>
+</html>

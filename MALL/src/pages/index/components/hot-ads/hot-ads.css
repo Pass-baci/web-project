@@ -1,0 +1,10 @@
+.hot-ads .center-wrap ul li {
+    float: left;
+    width: 264px;
+    height: 110px;
+    margin-right: 32px;
+}
+
+.hot-ads .center-wrap ul li:last-child {
+    margin-right: 0;
+}
