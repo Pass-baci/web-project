@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompositionAPI-test1</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const app = Vue.createApp({
+            setup(props, context) {
+                const {ref, reactive} = Vue;
+                const inputValue = ref()
+                const changeInputValue = (e) => {
+                    inputValue.value = e.target.value;
+                }
+                const list = reactive([])
+                const clickSumbit = ()=>{
+                    list.push(inputValue.value)
+                }
+                return {
+                    inputValue,
+                    list,
+                    changeInputValue,
+                    clickSumbit
+                }
+            },
+            template: `
+                <div>
+                    <input :value="inputValue" @input="changeInputValue"/>
+                    <button @click="clickSumbit">提交</button>
+                    <div>inputValue: {{inputValue}}</div>
+                    <ul>
+                        <li v-for="(item, index) in list">{{item}}</li>
+                    </ul>
+                </div>
+            `
+        })
+        const vm = app.mount('#app')
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompositionAPI-test2</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const app = Vue.createApp({
+            setup(props, context) {
+                const {ref, watch, reactive, toRefs} = Vue;
+                const value = ref('');
+                const valueObj = reactive({
+                    value1: '',
+                    value2: '',
+                })
+                watch([value, ()=>valueObj.value1, ()=>valueObj.value2], ([currValue, currValue1, currValue2], [preValue, preValue1, preValue2])=>{
+                    console.log(currValue, preValue, '---', currValue1, preValue1, '---', currValue2, preValue2);
+                })
+                const {value1, value2} = toRefs(valueObj);
+                return {
+                    value,value1,value2
+                }
+            },
+            template: `
+                <div>
+                    <input v-model="value" />
+                    <div>value: {{value}}</div>
+                </div>
+                <div>
+                    <input v-model="value1" />
+                    <div>value1: {{value1}}</div>
+                    <input v-model="value2" />
+                    <div>value2: {{value2}}</div>
+                </div>
+            `
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
