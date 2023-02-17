@@ -13,6 +13,52 @@
       <div class="banner">
         <img class="banner__img" src="http://www.dell-lee.com/imgs/vue3/banner.jpg" />
       </div>
+      <div class="icons">
+        <div class="icons__item" v-for="(desc, index) in iconsDesc" :key="index">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/超市.png" />
+          <p class="icons__item__desc">{{ desc }}</p>
+        </div>
+      </div>
+      <div class="gap"></div>
+      <div class="nearby">
+        <h3 class="nearby__title">附近店铺</h3>
+        <div class="nearby__item">
+          <img src="http://www.dell-lee.com/imgs/vue3/near.png" alt="" class="nearby__item__img" />
+          <div class="nearby__item__content">
+            <div class="nearby__item__content__title">沃尔玛</div>
+            <div class="nearby__item__content__tags">
+              <span class="nearby__item__content__tags__tag">月售1万+</span>
+              <span class="nearby__item__content__tags__tag">起送￥0</span>
+              <span class="nearby__item__content__tags__tag">基础运费￥5</span>
+              <p class="nearby__item__content__tags__light">VIP尊享满89元减4元运费券（每月3张）</p>
+            </div>
+          </div>
+        </div>
+        <div class="nearby__item">
+          <img src="http://www.dell-lee.com/imgs/vue3/near.png" alt="" class="nearby__item__img" />
+          <div class="nearby__item__content">
+            <div class="nearby__item__content__title">沃尔玛</div>
+            <div class="nearby__item__content__tags">
+              <span class="nearby__item__content__tags__tag">月售1万+</span>
+              <span class="nearby__item__content__tags__tag">起送￥0</span>
+              <span class="nearby__item__content__tags__tag">基础运费￥5</span>
+              <p class="nearby__item__content__tags__light">VIP尊享满89元减4元运费券（每月3张）</p>
+            </div>
+          </div>
+        </div>
+        <div class="nearby__item">
+          <img src="http://www.dell-lee.com/imgs/vue3/near.png" alt="" class="nearby__item__img" />
+          <div class="nearby__item__content">
+            <div class="nearby__item__content__title">沃尔玛</div>
+            <div class="nearby__item__content__tags">
+              <span class="nearby__item__content__tags__tag">月售1万+</span>
+              <span class="nearby__item__content__tags__tag">起送￥0</span>
+              <span class="nearby__item__content__tags__tag">基础运费￥5</span>
+              <p class="nearby__item__content__tags__light">VIP尊享满89元减4元运费券（每月3张）</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="docker">
       <span class="docker__item docker__item--active">
@@ -35,11 +81,23 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App',
+  data () {
+    return {
+      iconsDesc: ['超市便利', '菜市场', '水果店', '鲜花绿植', '医药健康', '家居时尚', '烘培蛋糕', '签到', '大牌免运', '红包套餐']
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 @import './style/var.scss';
 @import './style/mixins.scss';
 
 .wrapper {
+  overflow-y: auto;
   position: absolute;
   top: 0;
   bottom: .49rem;
@@ -107,6 +165,72 @@
       width: 100%;
     }
   }
+
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: .12rem;
+    margin-top: .16rem;
+
+    &__item {
+      width: 20%;
+
+      &__img {
+        display: block;
+        width: .4rem;
+        height: .4rem;
+        margin: 0 auto;
+      }
+
+      &__desc {
+        margin: .06rem 0 .16rem 0;
+        text-align: center;
+        color: $content-fontcolor;
+      }
+    }
+  }
+
+  .gap {
+    height: .1rem;
+    background: $content-bgcolor;
+    margin: 0 -.18rem;
+  }
+
+  .nearby {
+    &__title {
+      margin: .16rem 0 .02rem 0;
+      font-size: .18rem;
+      font-weight: normal;
+      color: $content-fontcolor;
+    }
+    &__item {
+      display: flex;
+      padding: .12rem 0 0 0;
+      &__img {
+        margin-right: .16rem;
+        width: .56rem;
+        height: .56rem;
+      }
+      &__content {
+        flex: 1;
+        border-bottom: .01rem solid $content-bgcolor;
+        &__title {
+          font-size: .16rem;
+          margin-bottom: .08rem;
+        }
+        &__tags {
+          font-size: .13rem;
+          &__tag {
+            margin-right: .16rem;
+          }
+          &__light{
+            margin: .08 0 0 0;
+            color: #E93B3B;
+          }
+        }
+      }
+    }
+  }
 }
 
 .docker {
@@ -119,7 +243,7 @@
   width: 100%;
   height: .49rem;
   background: #FFFFFF;
-  box-shadow: 0 -1px 1px 0 #F1F1F1;
+  box-shadow: 0 -1px 1px 0 $content-bgcolor;
   color: $content-fontcolor;
 
   &__item {
